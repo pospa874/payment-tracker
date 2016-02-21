@@ -1,0 +1,42 @@
+classes/
+
+# Ignore artifacts
+build/
+target/
+
+# Ignore Eclipse
+.project
+.settings
+version.info
+.classpath
+
+rebel.xml
+
+### Ignore Jetbrains IDEA files
+# all *.iml files
+*.iml
+*s101*
+*.ipr
+*.iws
+# all folders with .idea
+.idea
+# all .pmd files
+*.pmd
+infinitest*
+/out
+
+### Ignore Gradle files
+.gradle
+.gradle/
+gradle-app.setting
+*.metadata*
+.java-version
+
+### Ignore Netbeans files
+/.nb-gradle/private/
+/.nb-gradle/profiles/private/
+/.nb-gradle-properties
+**/private/cache/
+
+### Ignore Mac files
+.DS_Store
