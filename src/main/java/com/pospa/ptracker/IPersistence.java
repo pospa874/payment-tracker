@@ -1,4 +1,4 @@
-package com.pospa.test;
+package com.pospa.ptracker;
 
 import java.util.List;
 import javax.validation.Valid;

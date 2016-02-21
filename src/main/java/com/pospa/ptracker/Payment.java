@@ -1,4 +1,4 @@
-package com.pospa.test;
+package com.pospa.ptracker;
 
 import java.math.BigDecimal;
 import javax.validation.constraints.NotNull;
