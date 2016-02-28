@@ -3,12 +3,12 @@ package com.pospa.ptracker;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentMap;
 
 public class Storage implements IPersistence {
 
-    private static Map<String, BigDecimal> storageMap = new ConcurrentHashMap<>(200);
+    private static ConcurrentMap<String, BigDecimal> storageMap = new ConcurrentHashMap<>(200);
 
     @Override
     public void persist(Payment payment) {
@@ -25,11 +25,10 @@ public class Storage implements IPersistence {
     public List<Payment> getAll() {
         List<Payment> allCurrencies = new ArrayList<>(storageMap.size());
         storageMap.forEach((currency, amount) -> {
-            if (amount.compareTo(BigDecimal.ZERO) != 0) {
+            if (BigDecimal.ZERO.compareTo(amount) != 0) {
                 allCurrencies.add(new Payment(currency, amount));
             }
         });
-
         return allCurrencies;
     }
 
@@ -39,7 +38,6 @@ public class Storage implements IPersistence {
             BigDecimal amount = storageMap.get(currencyCode);
             return new Payment(currencyCode, amount);
         }
-
         return null;
     }
 }

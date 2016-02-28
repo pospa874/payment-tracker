@@ -28,8 +28,6 @@ public class Payment {
 
     @Override
     public String toString() {
-        StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append(currencyCode).append(" ").append(amount).append(System.lineSeparator());
-        return stringBuilder.toString();
+        return currencyCode + " " + amount + System.lineSeparator();
     }
 }
