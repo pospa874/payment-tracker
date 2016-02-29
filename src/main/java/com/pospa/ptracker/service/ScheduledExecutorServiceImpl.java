@@ -23,17 +23,6 @@ public class ScheduledExecutorServiceImpl {
     }
 
     public void shutdown() {
-        try {
-            scheduledExecutorService.shutdown();
-            scheduledExecutorService.awaitTermination(10, TimeUnit.SECONDS);
-        } catch (InterruptedException e) {
-            System.err.println("Unable to shutdown thread pool");
-        } finally {
-            if (!scheduledExecutorService.isTerminated()) {
-                System.err.println("Force shutdown non-finished tasks");
-            }
-            scheduledExecutorService.shutdownNow();
-            System.out.println("Shutdown finished");
-        }
+        new ShutdownExecutorsService(scheduledExecutorService).shutdown();
     }
 }
