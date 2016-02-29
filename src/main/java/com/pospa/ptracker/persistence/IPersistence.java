@@ -1,6 +1,7 @@
 package com.pospa.ptracker.persistence;
 
 import java.util.List;
+import java.util.Optional;
 
 import com.pospa.ptracker.model.Payment;
 
@@ -10,5 +11,5 @@ public interface IPersistence {
 
     List<Payment> getAll();
 
-    Payment get(String currencyCode);
+    Optional<Payment> get(String currencyCode);
 }

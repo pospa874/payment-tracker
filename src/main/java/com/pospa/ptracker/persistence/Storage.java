@@ -3,6 +3,7 @@ package com.pospa.ptracker.persistence;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
@@ -35,11 +36,11 @@ public class Storage implements IPersistence {
     }
 
     @Override
-    public Payment get(String currencyCode) {
+    public Optional<Payment> get(String currencyCode) {
         if (storageMap.containsKey(currencyCode)) {
             BigDecimal amount = storageMap.get(currencyCode);
-            return new Payment(currencyCode, amount);
+            return Optional.of(new Payment(currencyCode, amount));
         }
-        return null;
+        return Optional.empty();
     }
 }
