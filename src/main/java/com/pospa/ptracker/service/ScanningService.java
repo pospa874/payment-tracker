@@ -1,7 +1,9 @@
 package com.pospa.ptracker.service;
 
 import java.math.BigDecimal;
+import java.util.NoSuchElementException;
 import java.util.Scanner;
+import java.util.StringTokenizer;
 
 import com.pospa.ptracker.model.Payment;
 import com.pospa.ptracker.persistence.IPersistence;
@@ -23,6 +25,7 @@ public class ScanningService implements Runnable {
         while (scanner.hasNext()) {
             line = scanner.nextLine();
             if (EXIT.equals(line.trim())) {
+                scanner.close();
                 ScheduledExecutorServiceImpl.getInstance().shutdown();
                 break;
             }
@@ -35,15 +38,18 @@ public class ScanningService implements Runnable {
 
     private Payment parsePayment(String line) {
         try {
-            String currencyCode = line.substring(0, 3).trim();
-            BigDecimal amount = new BigDecimal(line.substring(3).trim());
+            StringTokenizer st = new StringTokenizer(line);
+            String currencyCode = st.nextToken();
+            BigDecimal amount = new BigDecimal(st.nextToken());
             Payment payment = new Payment(currencyCode, amount);
             PaymentValidator paymentValidator = new PaymentValidator(payment);
             if (paymentValidator.isValid()) {
                 return payment;
             }
         } catch (NumberFormatException nfe) {
-            nfe.printStackTrace();
+            System.err.println("Wrong amount input");
+        } catch (NoSuchElementException nsee) {
+            System.err.println("Wrong input, probably missing amount");
         }
         return null;
     }

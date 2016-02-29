@@ -3,7 +3,6 @@ package com.pospa.ptracker;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
-import javax.validation.ValidationException;
 
 import com.pospa.ptracker.persistence.IPersistence;
 import com.pospa.ptracker.persistence.Storage;
@@ -12,7 +11,7 @@ import com.pospa.ptracker.service.ScheduledExecutorServiceImpl;
 
 public class PaymentTracker {
 
-    public static void main(String[] args) throws ValidationException {
+    public static void main(String[] args) {
         System.out.println("Payment tracker started");
 
         ScheduledExecutorServiceImpl scheduledExecutorService = ScheduledExecutorServiceImpl.getInstance();
