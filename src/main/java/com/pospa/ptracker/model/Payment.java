@@ -1,16 +1,11 @@
-package com.pospa.ptracker;
+package com.pospa.ptracker.model;
 
 import java.math.BigDecimal;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
 
 public class Payment {
     
-    @NotNull
-    @Pattern(regexp = "^[A-Z]{3}$", message = "Invalid currency code. Allowed may be any uppercase 3 letter code")
     private final String currencyCode;
-
-    @NotNull
+    
     private final BigDecimal amount;
 
     public Payment(String currencyCode, BigDecimal amount) {
@@ -28,6 +23,6 @@ public class Payment {
 
     @Override
     public String toString() {
-        return currencyCode + " " + amount + System.lineSeparator();
+        return currencyCode + " " + amount;
     }
 }

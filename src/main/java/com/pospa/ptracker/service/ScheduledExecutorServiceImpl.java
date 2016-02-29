@@ -1,4 +1,4 @@
-package com.pospa.ptracker;
+package com.pospa.ptracker.service;
 
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
@@ -6,7 +6,7 @@ import java.util.concurrent.TimeUnit;
 
 public class ScheduledExecutorServiceImpl {
 
-    ScheduledExecutorService scheduledExecutorService;
+    private ScheduledExecutorService scheduledExecutorService;
 
     private static ScheduledExecutorServiceImpl instance = new ScheduledExecutorServiceImpl();
 

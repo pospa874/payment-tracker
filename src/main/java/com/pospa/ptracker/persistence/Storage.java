@@ -1,10 +1,12 @@
-package com.pospa.ptracker;
+package com.pospa.ptracker.persistence;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
+
+import com.pospa.ptracker.model.Payment;
 
 public class Storage implements IPersistence {
 

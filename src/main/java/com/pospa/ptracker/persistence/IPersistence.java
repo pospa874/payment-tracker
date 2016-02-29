@@ -1,11 +1,12 @@
-package com.pospa.ptracker;
+package com.pospa.ptracker.persistence;
 
 import java.util.List;
-import javax.validation.Valid;
+
+import com.pospa.ptracker.model.Payment;
 
 public interface IPersistence {
 
-    void persist(@Valid Payment payment);
+    void persist(Payment payment);
 
     List<Payment> getAll();
 
