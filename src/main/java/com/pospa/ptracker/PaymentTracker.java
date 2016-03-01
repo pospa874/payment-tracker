@@ -19,7 +19,7 @@ public class PaymentTracker {
         ScheduledExecutorServiceImpl scheduledExecutorService = ScheduledExecutorServiceImpl.getInstance();
         IPersistence storage = new Storage();
         Runnable task = () -> storage.getAll().forEach(System.out::println);
-        scheduledExecutorService.runScheduledTask(task, 1, 5, TimeUnit.SECONDS);
+        scheduledExecutorService.runScheduledTask(task, 1, 1, TimeUnit.MINUTES);
 
         ExecutorService executorService = Executors.newSingleThreadExecutor();
         final Future<?> future = executorService.submit(new ScanningService());
