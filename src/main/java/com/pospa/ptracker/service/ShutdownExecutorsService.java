@@ -5,7 +5,7 @@ import java.util.concurrent.TimeUnit;
 
 public class ShutdownExecutorsService {
     
-    private ExecutorService executorService;
+    private final ExecutorService executorService;
 
     public ShutdownExecutorsService(ExecutorService executorService) {
         this.executorService = executorService;

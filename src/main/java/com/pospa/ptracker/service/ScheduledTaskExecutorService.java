@@ -4,17 +4,17 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
-public class ScheduledExecutorServiceImpl {
+public class ScheduledTaskExecutorService {
 
     private ScheduledExecutorService scheduledExecutorService;
 
-    private static ScheduledExecutorServiceImpl instance = new ScheduledExecutorServiceImpl();
+    private static ScheduledTaskExecutorService instance = new ScheduledTaskExecutorService();
 
-    private ScheduledExecutorServiceImpl() {
+    private ScheduledTaskExecutorService() {
         this.scheduledExecutorService = Executors.newScheduledThreadPool(1);
     }
     
-    public static ScheduledExecutorServiceImpl getInstance() {
+    public static ScheduledTaskExecutorService getInstance() {
         return instance;
     }
 

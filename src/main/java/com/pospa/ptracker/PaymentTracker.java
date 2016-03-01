@@ -5,19 +5,19 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 
-import com.pospa.ptracker.persistence.IPersistence;
-import com.pospa.ptracker.persistence.Storage;
+import com.pospa.ptracker.repository.Repository;
+import com.pospa.ptracker.repository.Storage;
 import com.pospa.ptracker.service.ScanningService;
-import com.pospa.ptracker.service.ScheduledExecutorServiceImpl;
+import com.pospa.ptracker.service.ScheduledTaskExecutorService;
 import com.pospa.ptracker.service.ShutdownExecutorsService;
 
 public class PaymentTracker {
 
     public static void main(String[] args) {
-        System.out.println("Payment tracker started");
+        System.out.println("Payment tracker started. Insert currency code and amount:");
 
-        ScheduledExecutorServiceImpl scheduledExecutorService = ScheduledExecutorServiceImpl.getInstance();
-        IPersistence storage = new Storage();
+        ScheduledTaskExecutorService scheduledExecutorService = ScheduledTaskExecutorService.getInstance();
+        Repository storage = new Storage();
         Runnable task = () -> storage.getAll().forEach(System.out::println);
         scheduledExecutorService.runScheduledTask(task, 1, 1, TimeUnit.MINUTES);
 

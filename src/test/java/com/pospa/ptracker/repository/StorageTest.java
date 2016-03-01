@@ -1,4 +1,4 @@
-package com.pospa.ptracker.persistence;
+package com.pospa.ptracker.repository;
 
 import static org.hamcrest.MatcherAssert.*;
 import static org.hamcrest.Matchers.*;

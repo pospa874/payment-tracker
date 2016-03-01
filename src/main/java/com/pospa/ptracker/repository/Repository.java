@@ -1,11 +1,11 @@
-package com.pospa.ptracker.persistence;
+package com.pospa.ptracker.repository;
 
 import java.util.List;
 import java.util.Optional;
 
 import com.pospa.ptracker.model.Payment;
 
-public interface IPersistence {
+public interface Repository {
 
     void persist(Payment payment);
 

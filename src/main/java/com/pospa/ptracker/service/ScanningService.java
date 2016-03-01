@@ -7,8 +7,8 @@ import java.util.Scanner;
 import java.util.StringTokenizer;
 
 import com.pospa.ptracker.model.Payment;
-import com.pospa.ptracker.persistence.IPersistence;
-import com.pospa.ptracker.persistence.Storage;
+import com.pospa.ptracker.repository.Repository;
+import com.pospa.ptracker.repository.Storage;
 import com.pospa.ptracker.validator.PaymentValidator;
 
 public class ScanningService implements Runnable {
@@ -19,7 +19,7 @@ public class ScanningService implements Runnable {
 
     private final static String EXIT = "quit";
 
-    private IPersistence persistence = new Storage();
+    private Repository persistence = new Storage();
     
     @Override
     public void run() {
@@ -32,7 +32,7 @@ public class ScanningService implements Runnable {
             payment.ifPresent(persistence::persist);
         }
         scanner.close();
-        ScheduledExecutorServiceImpl.getInstance().shutdown();
+        ScheduledTaskExecutorService.getInstance().shutdown();
     }
 
     private Optional<Payment> parsePayment(String line) {

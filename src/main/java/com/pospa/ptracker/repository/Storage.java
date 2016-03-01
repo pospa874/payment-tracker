@@ -1,4 +1,6 @@
-package com.pospa.ptracker.persistence;
+package com.pospa.ptracker.repository;
+
+import static java.math.BigDecimal.*;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -9,7 +11,7 @@ import java.util.concurrent.ConcurrentMap;
 
 import com.pospa.ptracker.model.Payment;
 
-public class Storage implements IPersistence {
+public class Storage implements Repository {
 
     private static ConcurrentMap<String, BigDecimal> storageMap = new ConcurrentHashMap<>(200);
 
@@ -28,7 +30,7 @@ public class Storage implements IPersistence {
     public List<Payment> getAll() {
         List<Payment> allCurrencies = new ArrayList<>(storageMap.size());
         storageMap.forEach((currency, amount) -> {
-            if (BigDecimal.ZERO.compareTo(amount) != 0) {
+            if (ZERO.compareTo(amount) != 0) {
                 allCurrencies.add(new Payment(currency, amount));
             }
         });
