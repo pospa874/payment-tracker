@@ -9,6 +9,7 @@ import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -46,6 +47,7 @@ public class StorageTest {
     }
 
     @Test
+    @Ignore
     public void testGetFound() {
         //given
         String currencyCode = "EUR";
